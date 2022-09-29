@@ -1,37 +1,51 @@
-class _LightnfState extends State<Lightnf> {
-  bool lightison=false;
+class Light extends StatefulWidget{
+  const Light({super.key});
+
+  State<StatefulWidget>createState(){
+    return On();
+  }
+}
+class On extends State<Light>{  
+  bool light=false;
   @override
   Widget build(BuildContext context) {
+    // ignore: todo
     // TODO: implement build
-    return MaterialApp(
-      home: Scaffold(
-        body: SafeArea(
+    return  MaterialApp(
+      home:Scaffold(
+        backgroundColor: light?Colors.white :Colors.black,
+      body: SafeArea(
+        child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+           mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
-                Icons.lightbulb,
-                color: lightison? Colors.amber[600]:Colors.black,
+                Icons.sunny,
+                color: light? Colors.amber[500] : Colors.black,
                 size: 60,
               ),
-              SizedBox(height: 60,),
+              Icon(
+                Icons.nights_stay,
+                color: light? Colors.white : Colors.white,
+                size: 60,                
+              ),
+              SizedBox(height: 50,),
               GestureDetector(
-                child:Container(child: Text(lightison ? 'TURN OFF ' : 'TURN ON'),padding: EdgeInsets.all(20),) ,
-                onTap: () {
+                child: Text(light? 'night?' : 'sunny?', style: TextStyle(color: light?Colors.black : Colors.white), ),
+                onTap: (() {
                   setState(() {
-                    lightison=!lightison;
+                    light=!light;
                   });
-                  
                 }),
+              )
               
+
 
             ],
           ),
-
         ),
-
-       ),
-
+      ),
+    )
     );
   }
 }
