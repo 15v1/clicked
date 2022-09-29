@@ -1,0 +1,37 @@
+class _LightnfState extends State<Lightnf> {
+  bool lightison=false;
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return MaterialApp(
+      home: Scaffold(
+        body: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.lightbulb,
+                color: lightison? Colors.amber[600]:Colors.black,
+                size: 60,
+              ),
+              SizedBox(height: 60,),
+              GestureDetector(
+                child:Container(child: Text(lightison ? 'TURN OFF ' : 'TURN ON'),padding: EdgeInsets.all(20),) ,
+                onTap: () {
+                  setState(() {
+                    lightison=!lightison;
+                  });
+                  
+                }),
+              
+
+            ],
+          ),
+
+        ),
+
+       ),
+
+    );
+  }
+}
